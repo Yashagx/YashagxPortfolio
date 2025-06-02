@@ -8,6 +8,12 @@
   justify-content: center;
 }
 
+.highlight {
+  color: #4A90E2; /* Replace this with your specific "color4" value */
+  font-weight: 600;
+}
+
+
 /* Individual project box */
 .work .box {
   background: #fff;
