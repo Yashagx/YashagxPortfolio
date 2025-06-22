@@ -82,17 +82,12 @@
         <h3>I'm Yash Agarwal</h3>
         <span class="tag">Techsmith</span>
         
-
-  <p>
-    Born in Jamshedpur, I’m currently pursuing a 
-    <span class="highlight">B.Tech in Software Engineering at SRM Institute of Science and Technology, Kattankulathur, Tamil Nadu</span>. 
-    Passionate about technology, I specialize in Web Development, Full-Stack Development (JavaScript, React, Node.js), and Database Management (SQL, NoSQL). 
-    <span class="highlight">Former On-site Intern at Renault Nissan, currently working as a Research Intern at NIT Tiruchirappalli, 
-    contributing to government-funded research projects.</span> 
-    I thrive in collaborative settings, focusing on problem-solving through code and efficient system design. 
-    Eager to contribute, grow, and make an impact in software engineering.
-  </p>
-
+        <p>Born in Jamshedpur, I’m currently pursuing a B.Tech in Software Engineering at 
+          SRM Institute of Science and Technology, Kattankulathur, Tamil Nadu. Passionate about technology, 
+          I specialize in Web Development, Full-Stack Development (JavaScript, React, Node.js), and Database Management (SQL, NoSQL). 
+          Former On-site Intern at Renault Nissan and Research Intern at NIT Tiruchirappalli. I thrive in collaborative settings, 
+          focusing on problem-solving through code and efficient system design. 
+          Eager to contribute, grow, and make an impact in software engineering. </p>
         
         <div class="box-container">
             <!-- <div class="box">
@@ -106,7 +101,7 @@
         </div>
         
         <div class="resumebtn">
-            <a href="https://drive.google.com/file/d/1sdgyaX0t_nIrAD-rxmAt8erKALyxdgR0/view?usp=sharing" target="_blank" class="btn"><span>Resume</span>
+            <a href="https://drive.google.com/file/d/1eqodRYtsZflRSXABlI2ZRmFrQTQeOgtK/view?usp=drive_link" target="_blank" class="btn"><span>Resume</span>
                 <i class="fas fa-chevron-right"></i>
             </a>
         </div>
@@ -145,28 +140,112 @@
     <p class="qoute">Education is not the learning of facts, but the training of the mind to think.</p>
 
     <div class="box-container">
+<!-- COLLEGE BOX -->
+<div class="box">
+  <div class="image">
+    <img draggable="false" src="./assets/images/educat/college.jpg" alt="">
+  </div>
+  <div class="content">
+    <h3>Bachelor of Engineering in Software Engineering</h3>
+    <p>SRM Institute of Science and Technology, Kattankulathur, Tamil Nadu</p>
+    <h4>2023–2027 | Pursuing</h4>
 
-    <div class="box">
-        <div class="image">
-        <img draggable="false" src="./assets/images/educat/college.jpg" alt="">
-        </div>
-        <div class="content">
-        <h3>Bachelor of Engineering in Software Engineering</h3>
-        <p>SRM Institute of Science and Technology,Kattankulathur, Tamil Nadu </p>
-        <h4>2023-2027 | Pursuing</h4>
-        </div>
-    </div>
+    <!-- CGPA Achievement -->
+    <p style="font-size: 18px; font-weight: 700; color: #5c2d91; margin-top: 10px;">
+      🎯 CGPA (Upto Sem 4): 
+      <span class="cgpa-counter" data-target="9.91" style="color: #5c2d91;">0.00</span>
+    </p>
+  </div>
+</div>
 
-    <div class="box">
-      <div class="image">
-      <img draggable="false" src="./assets/images/educat/school.jpg" alt="">
-      </div>
-      <div class="content">
-      <h3>Graduation</h3>
-      <p>D.B.M.S. English School, Jamshedpur, Jharkhand | CICSE</p>
-      <h4>2008-2022 | Completed</h4>
-      </div>
+<!-- SCHOOL BOX -->
+<div class="box">
+  <div class="image">
+    <img draggable="false" src="./assets/images/educat/school.jpg" alt="">
+  </div>
+  <div class="content">
+    <h3>Graduation</h3>
+    <p>D.B.M.S. English School, Jamshedpur, Jharkhand | CICSE</p>
+    <h4>2008–2022 | Completed</h4>
+
+    <div style="margin-top: 0px; font-family: 'Segoe UI', sans-serif;">
+      <p style="font-size: 18px; font-weight: 700; color: #5c2d91; margin: 10px 0;">
+        🎓 10th (ICSE): 
+        <span class="percent" data-target="96" style="color: #5c2d91;">0</span>%
+      </p>
+
+      <p style="font-size: 18px; font-weight: 700; color: #5c2d91; margin: 10px 0;">
+        🏅 12th (ISC): 
+        <span class="percent" data-target="93" style="color: #5c2d91;">0</span>%
+      </p>
     </div>
+  </div>
+</div>
+
+<!-- SHARED SCRIPT FOR ALL COUNTERS -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // CGPA counter
+    const cgpaCounters = document.querySelectorAll('.cgpa-counter');
+    cgpaCounters.forEach(counter => {
+      const target = parseFloat(counter.getAttribute('data-target'));
+      let current = 0.00;
+
+      const updateCGPA = () => {
+        const increment = (target - current) / 20;
+        if (current < target) {
+          current += increment;
+          counter.innerText = current.toFixed(2);
+          requestAnimationFrame(updateCGPA);
+        } else {
+          counter.innerText = target.toFixed(2);
+        }
+      };
+      updateCGPA();
+    });
+
+    // 10th & 12th % counters
+    const percentCounters = document.querySelectorAll('.percent');
+    percentCounters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      let count = 0;
+
+      const updatePercent = () => {
+        const increment = Math.ceil((target - count) / 10);
+        if (count < target) {
+          count += increment;
+          counter.innerText = count > target ? target : count;
+          requestAnimationFrame(updatePercent);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updatePercent();
+    });
+  });
+</script>
+
+
+<script>
+  const counters = document.querySelectorAll('.percent');
+
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const speed = 30;
+
+      if (count < target) {
+        counter.innerText = Math.ceil(count + 1);
+        setTimeout(updateCount, speed);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
+</script>
+
 
 </div>
 </section>
@@ -333,6 +412,79 @@
 </section>
 
 <!-- work project section ends -->
+
+<section id="github-section" style="padding: 40px 20px; font-family: 'Segoe UI', sans-serif; text-align: center;">
+
+  <!-- Section Heading -->
+  <h2 style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #222; line-height: 1.3; margin-bottom: 25px;">
+    I love building things<br>
+    and contributing to<br>
+    OpenSource projects
+  </h2>
+
+  <!-- GitHub Contribution Graph -->
+  <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 10px;">
+    <div style="width: 1000px; margin: 0 auto; position: relative;">
+      <img 
+        src="https://ghchart.rshah.org/216e39/Yashagx" 
+        alt="GitHub Contribution Graph" 
+        style="width: 100%; height: auto; display: block;"
+      />
+
+      <!-- Bottom Stats Row -->
+      <div style="
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        color: #57606a;
+        font-family: 'Courier New', monospace;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      ">
+        <!-- Left Side: Contributions -->
+        <strong style="color: #333; font-weight: 600;">
+          300+ contributions in the last year
+        </strong>
+
+        <!-- Right Side: GitHub Color Legend -->
+        <span>
+          Less 
+          <span style="display: inline-block; width: 12px; height: 12px; background-color: #ebedf0; border-radius: 2px; margin: 0 2px;"></span>
+          <span style="display: inline-block; width: 12px; height: 12px; background-color: #9be9a8; border-radius: 2px; margin: 0 2px;"></span>
+          <span style="display: inline-block; width: 12px; height: 12px; background-color: #40c463; border-radius: 2px; margin: 0 2px;"></span>
+          <span style="display: inline-block; width: 12px; height: 12px; background-color: #30a14e; border-radius: 2px; margin: 0 2px;"></span>
+          <span style="display: inline-block; width: 12px; height: 12px; background-color: #216e39; border-radius: 2px; margin: 0 2px;"></span>
+          More
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GitHub Button -->
+  <a href="https://github.com/Yashagx" target="_blank" style="text-decoration: none;">
+    <button style="
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    ">
+      <img 
+        src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" 
+        alt="GitHub" 
+        style="width: 20px; height: 20px; filter: invert(1);" 
+      />
+      Visit My GitHub
+    </button>
+  </a>
+</section>
+
 
 <!-- experience section starts -->
 <section class="experience" id="experience">
