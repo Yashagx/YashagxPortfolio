@@ -181,69 +181,75 @@
       </div>
     </div>
   </div>
-
-  <!-- SHARED SCRIPT FOR ALL COUNTERS -->
-  <script>
-    function animateCounters() {
-      const cgpaCounters = document.querySelectorAll('.cgpa-counter');
-      cgpaCounters.forEach(counter => {
-        const target = parseFloat(counter.getAttribute('data-target'));
-        let current = 0.00;
-
-        const updateCGPA = () => {
-          const increment = (target - current) / 20;
-          if (current < target) {
-            current += increment;
-            counter.innerText = current.toFixed(2);
-            requestAnimationFrame(updateCGPA);
-          } else {
-            counter.innerText = target.toFixed(2);
-          }
-        };
-        updateCGPA();
-      });
-
-      const percentCounters = document.querySelectorAll('.percent');
-      percentCounters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        let count = 0;
-
-        const updatePercent = () => {
-          const increment = Math.ceil((target - count) / 10);
-          if (count < target) {
-            count += increment;
-            counter.innerText = count > target ? target : count;
-            requestAnimationFrame(updatePercent);
-          } else {
-            counter.innerText = target;
-          }
-        };
-        updatePercent();
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateCounters();
-            observer.disconnect();
-          }
-        });
-      }, {
-        threshold: 0.3
-      });
-
-      const educationSection = document.querySelector('#education');
-      if (educationSection) {
-        observer.observe(educationSection);
-      }
-    });
-  </script>
   </div>
+
+<!-- Counter Animation Triggered on Scroll -->
+<script>
+  function animateEducationCounters() {
+    // CGPA Counter
+    const cgpaCounters = document.querySelectorAll('.cgpa-counter');
+    cgpaCounters.forEach(counter => {
+      const target = parseFloat(counter.getAttribute('data-target'));
+      let current = 0.00;
+
+      const updateCGPA = () => {
+        const increment = (target - current) / 20;
+        if (current < target) {
+          current += increment;
+          counter.innerText = current.toFixed(2);
+          requestAnimationFrame(updateCGPA);
+        } else {
+          counter.innerText = target.toFixed(2);
+        }
+      };
+      updateCGPA();
+    });
+
+    // 10th and 12th Percentage Counters
+    const percentCounters = document.querySelectorAll('.percent');
+    percentCounters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      let count = 0;
+
+      const updatePercent = () => {
+      const increment = 0.5;
+        if (count < target) {
+          count += increment;
+          counter.innerText = count > target ? target : count;
+          requestAnimationFrame(updatePercent);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updatePercent();
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const educationSection = document.querySelector('#education');
+    let animated = false;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          animateEducationCounters();
+          observer.unobserve(educationSection);
+        }
+      });
+    }, {
+      threshold: 0.6 // section 60% visible
+    });
+
+    if (educationSection) {
+      observer.observe(educationSection);
+    }
+  });
+</script>
+
+
 </section>
 <!-- education section ends -->
-
 
 
 <!-- work project section starts -->
