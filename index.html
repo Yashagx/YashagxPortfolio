@@ -137,119 +137,113 @@
 
   <h1 class="heading"><i class="fas fa-graduation-cap"></i> My <span>Education</span></h1>
 
-    <p class="qoute">Education is not the learning of facts, but the training of the mind to think.</p>
+  <p class="qoute">Education is not the learning of facts, but the training of the mind to think.</p>
 
-    <div class="box-container">
-<!-- COLLEGE BOX -->
-<div class="box">
-  <div class="image">
-    <img draggable="false" src="./assets/images/educat/college.jpg" alt="">
-  </div>
-  <div class="content">
-    <h3>Bachelor of Engineering in Software Engineering</h3>
-    <p>SRM Institute of Science and Technology, Kattankulathur, Tamil Nadu</p>
-    <h4>2023–2027 | Pursuing</h4>
+  <div class="box-container">
+  <!-- COLLEGE BOX -->
+  <div class="box">
+    <div class="image">
+      <img draggable="false" src="./assets/images/educat/college.jpg" alt="">
+    </div>
+    <div class="content">
+      <h3>Bachelor of Engineering in Software Engineering</h3>
+      <p>SRM Institute of Science and Technology, Kattankulathur, Tamil Nadu</p>
+      <h4>2023–2027 | Pursuing</h4>
 
-    <!-- CGPA Achievement -->
-    <p style="font-size: 18px; font-weight: 700; color: #5c2d91; margin-top: 10px;">
-      🎯 CGPA (Upto Sem 4): 
-      <span class="cgpa-counter" data-target="9.91" style="color: #5c2d91;">0.00</span>
-    </p>
-  </div>
-</div>
-
-<!-- SCHOOL BOX -->
-<div class="box">
-  <div class="image">
-    <img draggable="false" src="./assets/images/educat/school.jpg" alt="">
-  </div>
-  <div class="content">
-    <h3>Graduation</h3>
-    <p>D.B.M.S. English School, Jamshedpur, Jharkhand | CICSE</p>
-    <h4>2008–2022 | Completed</h4>
-
-    <div style="margin-top: 0px; font-family: 'Segoe UI', sans-serif;">
-      <p style="font-size: 18px; font-weight: 700; color: #5c2d91; margin: 10px 0;">
-        🎓 10th (ICSE): 
-        <span class="percent" data-target="96" style="color: #5c2d91;">0</span>%
-      </p>
-
-      <p style="font-size: 18px; font-weight: 700; color: #5c2d91; margin: 10px 0;">
-        🏅 12th (ISC): 
-        <span class="percent" data-target="93" style="color: #5c2d91;">0</span>%
+      <!-- CGPA Achievement -->
+      <p style="font-size: 18px; font-weight: 700; color: #5c2d91; margin-top: 10px;">
+        🎯 CGPA (Upto Sem 4): 
+        <span class="cgpa-counter" data-target="9.91" style="color: #5c2d91;">0.00</span>
       </p>
     </div>
   </div>
-</div>
 
-<!-- SHARED SCRIPT FOR ALL COUNTERS -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // CGPA counter
-    const cgpaCounters = document.querySelectorAll('.cgpa-counter');
-    cgpaCounters.forEach(counter => {
-      const target = parseFloat(counter.getAttribute('data-target'));
-      let current = 0.00;
+  <!-- SCHOOL BOX -->
+  <div class="box">
+    <div class="image">
+      <img draggable="false" src="./assets/images/educat/school.jpg" alt="">
+    </div>
+    <div class="content">
+      <h3>Graduation</h3>
+      <p>D.B.M.S. English School, Jamshedpur, Jharkhand | CICSE</p>
+      <h4>2008–2022 | Completed</h4>
 
-      const updateCGPA = () => {
-        const increment = (target - current) / 20;
-        if (current < target) {
-          current += increment;
-          counter.innerText = current.toFixed(2);
-          requestAnimationFrame(updateCGPA);
-        } else {
-          counter.innerText = target.toFixed(2);
-        }
-      };
-      updateCGPA();
-    });
+      <div style="margin-top: 0px; font-family: 'Segoe UI', sans-serif;">
+        <p style="font-size: 18px; font-weight: 700; color: #5c2d91; margin: 10px 0;">
+          🎓 10th (ICSE): 
+          <span class="percent" data-target="96" style="color: #5c2d91;">0</span>%
+        </p>
 
-    // 10th & 12th % counters
-    const percentCounters = document.querySelectorAll('.percent');
-    percentCounters.forEach(counter => {
-      const target = +counter.getAttribute('data-target');
-      let count = 0;
+        <p style="font-size: 18px; font-weight: 700; color: #5c2d91; margin: 10px 0;">
+          🏅 12th (ISC): 
+          <span class="percent" data-target="93" style="color: #5c2d91;">0</span>%
+        </p>
+      </div>
+    </div>
+  </div>
 
-      const updatePercent = () => {
-        const increment = Math.ceil((target - count) / 10);
-        if (count < target) {
-          count += increment;
-          counter.innerText = count > target ? target : count;
-          requestAnimationFrame(updatePercent);
-        } else {
-          counter.innerText = target;
-        }
-      };
-      updatePercent();
-    });
-  });
-</script>
+  <!-- SHARED SCRIPT FOR ALL COUNTERS -->
+  <script>
+    function animateCounters() {
+      const cgpaCounters = document.querySelectorAll('.cgpa-counter');
+      cgpaCounters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target'));
+        let current = 0.00;
 
+        const updateCGPA = () => {
+          const increment = (target - current) / 20;
+          if (current < target) {
+            current += increment;
+            counter.innerText = current.toFixed(2);
+            requestAnimationFrame(updateCGPA);
+          } else {
+            counter.innerText = target.toFixed(2);
+          }
+        };
+        updateCGPA();
+      });
 
-<script>
-  const counters = document.querySelectorAll('.percent');
+      const percentCounters = document.querySelectorAll('.percent');
+      percentCounters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        let count = 0;
 
-  counters.forEach(counter => {
-    const updateCount = () => {
-      const target = +counter.getAttribute('data-target');
-      const count = +counter.innerText;
-      const speed = 30;
+        const updatePercent = () => {
+          const increment = Math.ceil((target - count) / 10);
+          if (count < target) {
+            count += increment;
+            counter.innerText = count > target ? target : count;
+            requestAnimationFrame(updatePercent);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updatePercent();
+      });
+    }
 
-      if (count < target) {
-        counter.innerText = Math.ceil(count + 1);
-        setTimeout(updateCount, speed);
-      } else {
-        counter.innerText = target;
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            observer.disconnect();
+          }
+        });
+      }, {
+        threshold: 0.3
+      });
+
+      const educationSection = document.querySelector('#education');
+      if (educationSection) {
+        observer.observe(educationSection);
       }
-    };
-    updateCount();
-  });
-</script>
-
-
-</div>
+    });
+  </script>
+  </div>
 </section>
 <!-- education section ends -->
+
 
 
 <!-- work project section starts -->
