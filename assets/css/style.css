@@ -1303,3 +1303,20 @@ form .button-area {
   top: calc(100% - 12rem);
 }
 /* scroll top ends */
+body.dark-theme {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-theme a {
+  color: #90caf9;
+}
+
+body.dark-theme .btn {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-theme .navbar {
+  background-color: #1e1e1e;
+}
