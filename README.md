@@ -42,4 +42,4 @@ yashagx-portfolio-website/
 
 ---
 
-Feel free to fork, customize, or contribute. Built with love by Yash 💻✨
+Built with love by Yash 💻✨
